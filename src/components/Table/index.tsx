@@ -1,7 +1,18 @@
-import { UsersProps } from '@/types/users'
+import { UserContext } from '@/context/userContext'
+import { User } from '@/types/users'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useContext } from 'react'
 
-export function Table({ users }: UsersProps) {
+export function Table() {
+  const { selectUser, dataGetUsers } = useContext(UserContext)
+
+  console.log('Contexto ', dataGetUsers)
+
+  function handleGetUserSelected(user: User) {
+    selectUser(user)
+  }
+
   return (
     <>
       <div className="p-5 h-full bg-gray-100">
@@ -24,7 +35,7 @@ export function Table({ users }: UsersProps) {
           </thead>
 
           <tbody className="divide-y divide-gray-100">
-            {users.map((user) => (
+            {dataGetUsers?.map((user) => (
               <tr key={user.id} className="bg-white">
                 <td className="p-3 text-sm text-gray-700">
                   <Image
@@ -36,12 +47,13 @@ export function Table({ users }: UsersProps) {
                   />
                 </td>
                 <td className="p-3 text-sm text-gray-700">
-                  <a
-                    href=""
+                  <Link
+                    onClick={() => handleGetUserSelected(user)}
+                    href={`/user/${user.id}`}
                     className="font-bold text-blue-500 hover:underline"
                   >
                     {user.login}
-                  </a>
+                  </Link>
                 </td>
                 <td className="p-3 text-sm text-gray-700">Teste 3</td>
                 <td className="p-3 text-sm text-gray-700">

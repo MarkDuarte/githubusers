@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Button } from '../Button'
 import { Input } from '../Input'
 import { NavLogo } from './NavLogo'
@@ -8,11 +8,13 @@ import { api } from '@/services/api'
 import { ListUser } from '../Pagination'
 import { User } from '@/types/users'
 import { ErrorTooltip } from '../Tooltip'
+import { UserContext } from '@/context/userContext'
 
 export function Nav() {
   const [search, setSearch] = useState('')
   const [users, setUsers] = useState<User[]>([])
   const [messageTooltip, setMessageTooltip] = useState('')
+  const { dataSetUsers } = useContext(UserContext)
 
   async function searchSubmit() {
     try {
@@ -23,7 +25,10 @@ export function Nav() {
 
       const response = await api(search)
 
+      console.log(response)
+
       setUsers(response)
+      dataSetUsers(response)
     } catch (error) {
       setMessageTooltip('Erro ao localizar usuario')
     }
