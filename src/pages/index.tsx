@@ -9,6 +9,7 @@ import { Input } from '@/components/Input'
 import { Button } from '@/components/Button'
 import { ListUser } from '@/components/Pagination'
 import ErrorTooltip from '@/components/Tooltip'
+import Head from 'next/head'
 
 export default function Home() {
   const [search, setSearch] = useState('')
@@ -34,6 +35,9 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>List GitHub Users</title>
+      </Head>
       <nav className="w-full h-20 bg-gray-200 border-b border-gray-200">
         <div className="w-full h-full max-w-7xl m-auto flex items-center gap-4">
           <NavLogo />

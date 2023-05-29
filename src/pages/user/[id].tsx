@@ -1,5 +1,6 @@
 import { NavLogo } from '@/components/Nav/NavLogo'
 import { UserContext } from '@/context/userContext'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useContext } from 'react'
@@ -10,6 +11,9 @@ export default function User() {
 
   return (
     <>
+      <Head>
+        <title>List GitHub Users</title>
+      </Head>
       <div>
         <nav className="w-full h-20 bg-gray-200 border-b border-gray-200">
           <div className="w-full h-full max-w-7xl m-auto flex items-center gap-4">
