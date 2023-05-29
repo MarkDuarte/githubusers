@@ -6,8 +6,7 @@ import Link from 'next/link'
 import { useContext } from 'react'
 
 export default function User() {
-  const { selectedUser, dataGetUsers } = useContext(UserContext)
-  console.log('Contexto ', dataGetUsers)
+  const { selectedUser } = useContext(UserContext)
 
   return (
     <>
