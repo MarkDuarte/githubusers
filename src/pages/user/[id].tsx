@@ -1,4 +1,4 @@
-import { NavLogo } from '@/components/nav/NavLogo'
+import { NavLogo } from '@/components/Nav/NavLogo'
 import { UserContext } from '@/context/userContext'
 import Image from 'next/image'
 import Link from 'next/link'

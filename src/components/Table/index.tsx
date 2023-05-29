@@ -7,8 +7,6 @@ import { useContext } from 'react'
 export function Table() {
   const { selectUser, dataGetUsers } = useContext(UserContext)
 
-  console.log('Contexto ', dataGetUsers)
-
   function handleGetUserSelected(user: User) {
     selectUser(user)
   }
